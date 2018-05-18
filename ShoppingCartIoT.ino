@@ -29,7 +29,16 @@ void setup() {
 
 void loop() {
   if(WiFi.status() == WL_CONNECTED){
-//    Serial.println("WiFi connected");
+    StaticJsonBuffer<300> JSONbuffer;
+    JsonObject& JSONencoder = JSONbuffer.createObject();
+
+    JSONencoder["name"] = "denim";
+    JSONencoder["price"] = "2000";
+
+    char JSONmessageBuffer[300];
+    JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
+    Serial.println(JSONmessageBuffer);
+        
     }
 
 }
