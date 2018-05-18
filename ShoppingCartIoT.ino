@@ -1,3 +1,5 @@
+#include <ESP8266HTTPClient.h>
+
 #include <ArduinoJson.h>
 
 #include <ESP8266WiFi.h>
@@ -38,6 +40,17 @@ void loop() {
     char JSONmessageBuffer[300];
     JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
     Serial.println(JSONmessageBuffer);
+
+    HTTPClient http;
+    http.begin("http://35.229.49.95:8080/api/v1/productItem");
+    http.addHeader("Content-Type", "application/json");
+    int httpCode = http.POST(JSONmessageBuffer);
+    String payload = http.getString();
+    Serial.println(httpCode);
+    Serial.println(payload);
+    http.end();
+
+    delay(120000);
         
     }
 
