@@ -21,10 +21,15 @@ void setup() {
     delay(500);
     Serial.println("Waiting for connection");
     }
+  if(WiFi.status() == WL_CONNECTED){
+    Serial.println("WiFi is connected");
+    }
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  if(WiFi.status() == WL_CONNECTED){
+//    Serial.println("WiFi connected");
+    }
 
 }
