@@ -16,8 +16,8 @@
 
 char id[100];
 char data[5];
-int val =0;
-String items[50];
+char itemList[50];
+int val =0;//still not much use
 int itemNo=0;
 
 
@@ -32,7 +32,7 @@ void setup() {
 }
 
 void loop() {
-  bool TorF = false;
+
   val = Serial.read();
   while(! Serial.available()){
     Serial.print("..");
@@ -56,43 +56,11 @@ void loop() {
 
   memcpy(id, data, 7);
   id[7] = '\0'; 
-  //Serial.println('\0');
-  
-  TorF = id_check(id, items);
-  
-  
-  if(!TorF){
-    Serial.println("Item detected");
-    items[itemNo]=id;
-    itemNo++;
-
-    //sending item id and activate magnate
-    }
-
-   else{
-    Serial.println("Alrady entered item");
-    }
-  Serial.println(items[itemNo]);
-  
-  //Serial.println(sizeof(items)/sizeof(items[0]));
-  
+  Serial.println(id);
   
   delay(3000);
 }
 
-bool id_check(char* id, String* items){
-  int i=0;
-  while(items[i]!='\0'){
-    if(items[i]==id){
-      return true;
-      }
-    else{
-      i=i+1;
-      }
-
-    
-    }
-    return false;
- 
+bool id_check(char id){
   
   }

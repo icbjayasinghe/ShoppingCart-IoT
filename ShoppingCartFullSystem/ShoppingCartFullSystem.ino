@@ -32,6 +32,11 @@ int itemNo=0;
 
 
 void setup() {
+  //magnet and buzzer
+  pinMode(D1,OUTPUT);//for magnet
+  pinMode(D2,OUTPUT);
+  //magnet and buzzer end
+  
 //WiFi setup
 Serial.begin(9600);
   WiFi.begin("Home ZTE","Shift5771");
@@ -109,7 +114,15 @@ void loop() {
     String payload = http.getString();
     Serial.println(httpCode);
     Serial.println(payload);
-    http.end();    
+    http.end();
+
+    //buzzer and magnet activation
+    digitalWrite(D2,HIGH);
+    delay(3000);
+    digitalWrite(D2,LOW);
+    digitalWrite(D1,HIGH);
+    delay(8000);
+    digitalWrite(D1,LOW);
     }
 
     //activate magnate & buzzer
