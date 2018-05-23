@@ -34,12 +34,12 @@ int itemNo=0;
 void setup() {
   //magnet and buzzer
   pinMode(D1,OUTPUT);//for magnet
-  pinMode(D2,OUTPUT);
+  pinMode(D2,OUTPUT);//for buzzer
   //magnet and buzzer end
   
 //WiFi setup
 Serial.begin(9600);
-  WiFi.begin("Home ZTE","Shift5771");
+  WiFi.begin("OnePlus X","shift5771");
 
   while (WiFi.status() != WL_CONNECTED){
     delay(500);
@@ -101,7 +101,7 @@ void loop() {
     JsonObject& JSONencoder = JSONbuffer.createObject();
 
     JSONencoder["name"] = id;
-    JSONencoder["price"] = "3000";
+    JSONencoder["price"] = "790";
 
     char JSONmessageBuffer[300];
     JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
@@ -136,7 +136,7 @@ void loop() {
   //Serial.println(sizeof(items)/sizeof(items[0]));
   
   
-  delay(3000);
+  //delay(3000);
 }
 
 bool id_check(char* id, String* items){
